@@ -101,6 +101,9 @@ function handleCalcClick(key) {
     // 更新汇总
     updateSummary();
 
+    // 更新撤回按钮状态
+    updateUndoBtn();
+
     // 显示Toast
     if (price > 0) {
         showToast(`+${price} 万（${item.name}）`);
@@ -157,8 +160,45 @@ function initReset() {
         });
         state.history = [];
         updateSummary();
+        updateUndoBtn();
         showToast('已重置全部计算', false);
     });
+}
+
+// ===== 撤回操作 =====
+function handleUndo() {
+    if (state.history.length === 0) return;
+
+    const last = state.history.pop();
+    const key = last.key;
+
+    // 恢复计数
+    state.counts[key]--;
+
+    // 更新次数显示
+    const countEl = document.getElementById(`count_${key}`);
+    countEl.textContent = state.counts[key];
+    countEl.classList.remove('animate-pop');
+    void countEl.offsetWidth;
+    countEl.classList.add('animate-pop');
+
+    // 更新小计
+    const subtotalEl = document.getElementById(`subtotal_${key}`);
+    const subtotal = (state.counts[key] * state.prices[key]).toFixed(2);
+    subtotalEl.textContent = subtotal;
+
+    // 更新汇总
+    updateSummary();
+
+    // 更新撤回按钮状态
+    updateUndoBtn();
+
+    showToast(`已撤回：${last.name}`, false);
+}
+
+function updateUndoBtn() {
+    const btn = document.getElementById('undoBtn');
+    btn.disabled = state.history.length === 0;
 }
 
 // ===== Toast提示 =====
@@ -178,6 +218,9 @@ function init() {
     renderCostSettings();
     renderCalcButtons();
     initReset();
+
+    // 绑定撤回按钮
+    document.getElementById('undoBtn').addEventListener('click', handleUndo);
 }
 
 init();
