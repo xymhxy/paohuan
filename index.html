@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>梦幻西游 · 跑环成本计算器</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen">
+    <!-- 顶部标题区 -->
+    <header class="header-bg py-6 text-center relative overflow-hidden">
+        <div class="absolute inset-0 cloud-animation"></div>
+        <div class="relative z-10">
+            <div class="flex items-center justify-center gap-3 mb-2">
+                <i class="ri-gamepad-line text-4xl text-yellow-300 drop-shadow"></i>
+                <h1 class="text-4xl font-bold text-white tracking-widest title-glow">梦幻西游 · 跑环计算器</h1>
+                <i class="ri-gamepad-line text-4xl text-yellow-300 drop-shadow"></i>
+            </div>
+            <p class="text-yellow-200 text-sm tracking-wider">使用如有疑问请联系xyanwechat</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 py-8">
+        <!-- 成本设置模块 -->
+        <section class="mb-8">
+            <div class="section-header flex items-center gap-2 mb-5">
+                <i class="ri-settings-3-line text-2xl text-amber-500"></i>
+                <h2 class="text-xl font-bold text-gray-800">成本设置</h2>
+                <span class="text-xs text-gray-400 ml-2">（请根据本服物价填写单价，非必填项）</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="costSettings">
+                <!-- 9个输入项由JS生成 -->
+            </div>
+        </section>
+
+        <!-- 分隔线 -->
+        <div class="flex items-center gap-4 my-6">
+            <div class="flex-1 h-px bg-gradient-to-r from-transparent via-amber-300 to-transparent"></div>
+            <i class="ri-arrow-down-double-line text-amber-400 text-xl animate-bounce"></i>
+            <div class="flex-1 h-px bg-gradient-to-r from-transparent via-amber-300 to-transparent"></div>
+        </div>
+
+        <!-- 成本计算模块 -->
+        <section class="mb-8">
+            <div class="section-header flex items-center gap-2 mb-5">
+                <i class="ri-calculator-line text-2xl text-blue-500"></i>
+                <h2 class="text-xl font-bold text-gray-800">成本计算</h2>
+                <span class="text-xs text-gray-400 ml-2">（每点击一次按钮，累加对应物品成本）</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" id="calcButtons">
+                <!-- 9个按钮由JS生成 -->
+            </div>
+        </section>
+
+        <!-- 分隔线 -->
+        <div class="flex items-center gap-4 my-6">
+            <div class="flex-1 h-px bg-gradient-to-r from-transparent via-blue-300 to-transparent"></div>
+            <i class="ri-bar-chart-grouped-line text-blue-400 text-xl"></i>
+            <div class="flex-1 h-px bg-gradient-to-r from-transparent via-blue-300 to-transparent"></div>
+        </div>
+
+        <!-- 汇总区 -->
+        <section class="mb-8">
+            <div class="section-header flex items-center gap-2 mb-5">
+                <i class="ri-file-list-3-line text-2xl text-emerald-500"></i>
+                <h2 class="text-xl font-bold text-gray-800">本次跑环汇总</h2>
+            </div>
+            <div class="summary-card p-6 rounded-2xl">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                    <div class="flex-1">
+                        <div class="text-sm text-gray-500 mb-2">物品提交明细</div>
+                        <div id="detailList" class="space-y-1 text-sm text-gray-600 min-h-[40px]">
+                            <span class="text-gray-300 italic">暂无记录，请点击上方按钮开始计算</span>
+                        </div>
+                    </div>
+                    <div class="text-center md:text-right flex-shrink-0">
+                        <div class="text-sm text-gray-500 mb-1">本次跑环总成本</div>
+                        <div class="flex items-baseline justify-center md:justify-end gap-1">
+                            <span id="totalCost" class="text-4xl font-bold total-cost-text">0</span>
+                            <span class="text-lg text-amber-600 font-medium">万</span>
+                        </div>
+                        <button id="resetBtn" class="mt-3 px-5 py-2 rounded-full text-sm font-medium reset-btn transition-all duration-300">
+                            <i class="ri-refresh-line mr-1"></i>重置计算
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 小贴士 -->
+        <section class="tips-card p-5 rounded-2xl mb-6">
+            <div class="flex items-start gap-3">
+                <i class="ri-lightbulb-flash-line text-2xl text-amber-500 mt-0.5"></i>
+                <div>
+                    <h3 class="font-bold text-gray-700 mb-2">跑环小贴士</h3>
+                    <ul class="text-sm text-gray-500 space-y-1">
+                        <li>• 建议提前在摊位收集环装，批量购入更划算</li>
+                        <li>• 变异召唤兽可用任意垃圾变异宠代替，节省成本</li>
+                        <li>• 跑环前确认好本服各类物品均价，心中有数不亏本</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <!-- 页脚 -->
+    <footer class="text-center py-6 text-gray-400 text-sm">
+        <p>由 <a href="https://xymhxy.github.io/home/" style="color: #8A2BE2;" target="_blank">xyanwechat</a> 个人学习使用，请勿用于任何非学习用途</p>
+    </footer>
+    <script src="main.js"></script>
+</body>
+</html>

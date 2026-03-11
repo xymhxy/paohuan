@@ -1,0 +1,279 @@
+/* ===== 全局基础 ===== */
+body {
+    background: linear-gradient(135deg, #fdf6e3 0%, #e8f0fe 50%, #fef3e2 100%);
+    font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* ===== 顶部 Header ===== */
+.header-bg {
+    background: linear-gradient(135deg, #1a237e 0%, #4a148c 40%, #880e4f 100%);
+    box-shadow: 0 4px 20px rgba(26, 35, 126, 0.3);
+}
+
+.title-glow {
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5), 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.cloud-animation {
+    background:
+        radial-gradient(ellipse 200px 60px at 15% 60%, rgba(255,255,255,0.08) 0%, transparent 100%),
+        radial-gradient(ellipse 300px 80px at 75% 30%, rgba(255,255,255,0.06) 0%, transparent 100%),
+        radial-gradient(ellipse 150px 50px at 50% 80%, rgba(255,255,255,0.05) 0%, transparent 100%);
+    animation: cloudMove 20s ease-in-out infinite alternate;
+}
+
+@keyframes cloudMove {
+    0% { transform: translateX(-20px); }
+    100% { transform: translateX(20px); }
+}
+
+/* ===== 成本设置卡片 ===== */
+.cost-input-card {
+    background: white;
+    border-radius: 16px;
+    padding: 16px 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cost-input-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #f59e0b, #ef4444, #8b5cf6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.cost-input-card:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.cost-input-card:hover::before {
+    opacity: 1;
+}
+
+.cost-input-card .icon-wrap {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.cost-input-card input {
+    width: 100%;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    outline: none;
+    background: #fafafa;
+}
+
+.cost-input-card input:focus {
+    border-color: #f59e0b;
+    background: #fffbeb;
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+}
+
+.cost-input-card input::placeholder {
+    color: #c4c4c4;
+    font-size: 13px;
+}
+
+/* ===== 计算按钮 ===== */
+.calc-btn-card {
+    background: white;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.calc-btn-card:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.calc-btn {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    letter-spacing: 1px;
+}
+
+.calc-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    transition: all 0.5s ease;
+    transform: translate(-50%, -50%);
+}
+
+.calc-btn:active::after {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+}
+
+.calc-btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.calc-btn:active {
+    transform: scale(0.97);
+}
+
+/* 按钮颜色方案 */
+.btn-weapon60    { background: linear-gradient(135deg, #f97316, #ea580c); }
+.btn-armor60     { background: linear-gradient(135deg, #fb923c, #f97316); }
+.btn-weapon70    { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.btn-armor70     { background: linear-gradient(135deg, #60a5fa, #3b82f6); }
+.btn-weapon80    { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+.btn-armor80     { background: linear-gradient(135deg, #a78bfa, #8b5cf6); }
+.btn-variant     { background: linear-gradient(135deg, #ef4444, #dc2626); }
+.btn-flower      { background: linear-gradient(135deg, #ec4899, #db2777); }
+.btn-instrument  { background: linear-gradient(135deg, #14b8a6, #0d9488); }
+
+.calc-btn-count {
+    font-size: 12px;
+    color: #9ca3af;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.calc-btn-count .count-num {
+    font-weight: 700;
+    font-size: 18px;
+    color: #374151;
+    transition: all 0.3s ease;
+}
+
+.count-num.animate-pop {
+    animation: popNum 0.35s ease;
+}
+
+@keyframes popNum {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.5); color: #f59e0b; }
+    100% { transform: scale(1); }
+}
+
+/* ===== 汇总区 ===== */
+.summary-card {
+    background: white;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    border: 1px solid rgba(0,0,0,0.04);
+}
+
+.total-cost-text {
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.reset-btn {
+    background: #f3f4f6;
+    color: #6b7280;
+    border: 1px solid #e5e7eb;
+}
+
+.reset-btn:hover {
+    background: #ef4444;
+    color: white;
+    border-color: #ef4444;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+/* ===== 小贴士 ===== */
+.tips-card {
+    background: linear-gradient(135deg, #fffbeb, #fef3c7);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+/* ===== 明细条目 ===== */
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    animation: fadeInUp 0.3s ease;
+}
+
+.detail-item .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 640px) {
+    h1 { font-size: 1.5rem !important; }
+    .cost-input-card { padding: 12px 14px; }
+}
+
+/* ===== 按钮点击反馈Toast ===== */
+.cost-toast {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    background: rgba(0,0,0,0.8);
+    color: #fbbf24;
+    padding: 10px 24px;
+    border-radius: 24px;
+    font-size: 15px;
+    font-weight: 600;
+    z-index: 999;
+    pointer-events: none;
+    animation: toastAnim 1.2s ease forwards;
+}
+
+@keyframes toastAnim {
+    0% { opacity: 0; transform: translateX(-50%) translateY(0); }
+    15% { opacity: 1; transform: translateX(-50%) translateY(-10px); }
+    70% { opacity: 1; transform: translateX(-50%) translateY(-10px); }
+    100% { opacity: 0; transform: translateX(-50%) translateY(-30px); }
+}
