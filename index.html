@@ -48,6 +48,9 @@
                 <i class="ri-calculator-line text-2xl text-blue-500"></i>
                 <h2 class="text-xl font-bold text-gray-800">成本计算</h2>
                 <span class="text-xs text-gray-400 ml-2">（每点击一次按钮，累加对应物品成本）</span>
+                <button id="undoBtn" class="undo-btn ml-auto px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-1" disabled>
+                    <i class="ri-arrow-go-back-line"></i>撤回
+                </button>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" id="calcButtons">
                 <!-- 9个按钮由JS生成 -->
@@ -113,3 +116,4 @@
     <script src="main.js"></script>
 </body>
 </html>
+```
