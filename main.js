@@ -9,6 +9,8 @@ const ITEMS = [
     { key: 'variant',     name: '变异召唤兽',   icon: 'ri-bug-line',         iconBg: '#fef2f2', iconColor: '#dc2626',  btnClass: 'btn-variant',     dotColor: '#ef4444' },
     { key: 'flower',      name: '花',           icon: 'ri-flower-line',      iconBg: '#fdf2f8', iconColor: '#db2777',  btnClass: 'btn-flower',      dotColor: '#ec4899' },
     { key: 'instrument',  name: '乐器',         icon: 'ri-music-2-line',     iconBg: '#f0fdfa', iconColor: '#0d9488',  btnClass: 'btn-instrument',  dotColor: '#14b8a6' },
+    { key: 'furniture1',  name: '1级家具',       icon: 'ri-home-4-line',      iconBg: '#fef9c3', iconColor: '#a16207',  btnClass: 'btn-furniture1',  dotColor: '#ca8a04' },
+    { key: 'furniture2',  name: '2级家具',       icon: 'ri-home-4-fill',      iconBg: '#fef9c3', iconColor: '#854d0e',  btnClass: 'btn-furniture2',  dotColor: '#a16207' },
 ];
 
 // ===== 状态管理 =====
